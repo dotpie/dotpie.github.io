@@ -1,0 +1,24 @@
+/*-- scss:defaults --*/
+// darkmode style
+
+body.nav-fixed.quarto-dark,
+header#title-block-header,
+header#quarto-header>nav,
+header#title-block-header>div,
+div#quarto-content,
+footer.footer>div {
+  color: #eeeeee;
+  background-color: #282b34;
+}
+
+div.sourceCode {
+  background-color: #282b34;
+}
+
+/*-- scss:rules --*/
+
+/*-- scss:mixins --*/
+
+/*-- scss:functions --*/
+
+/*-- scss:uses --*/

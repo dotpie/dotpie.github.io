@@ -1,0 +1,65 @@
+/* main page */
+.quarto-grid-item .listing-title {
+    font-weight: bolder;
+    line-height: 1.3;
+    padding: 0rem 0rem 0.5rem 0rem;
+}
+
+.quarto-grid-item .listing-subtitle {
+    font-weight: lighter;
+    line-height: 1.3;
+    padding: 0rem 0rem 0.5rem 0rem;
+}
+
+.quarto-grid-item .listing-reading-time {
+    font-size: 0.8rem;
+    font-weight: lighter;
+    opacity: 0.6;
+    padding: 0rem 0rem 0.5rem 0rem;
+}
+
+#title-block-header > div.quarto-title-banner.page-columns.page-full > div > h1.title {
+  font-weight: bolder;
+  line-height: 1.3;
+  padding: 0rem 0rem 0.5rem 0rem;
+}
+
+#title-block-header > div.quarto-title-banner.page-columns.page-full > div > p.subtitle.lead {
+  font-size: larger;
+  font-weight: lighter;
+  line-height: 1.5;
+}
+
+#title-block-header.quarto-title-block.default .keywords, #title-block-header.quarto-title-block.default .description, #title-block-header.quarto-title-block.default .abstract {
+  font-size: large;
+  font-weight: lighter;
+  line-height: 1.3;
+  opacity: 0.8;
+  padding: 0rem 0rem 0.5rem 0rem;
+}
+
+
+#title-block-header.quarto-title-block.default .quarto-title-meta {
+  font-size: large;
+  font-weight: lighter;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+div.sourceCode {
+  font-size: 0.9rem;
+  font-weight: medium;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 1rem;
+}
+
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+  background-color: #ffffff00;
+  color: #008d62;
+  border: 0.5px solid #008d62;
+  font-weight: bolder;
+}
+
+

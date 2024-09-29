@@ -1,0 +1,160 @@
+project:
+  type: website
+  resources:
+    - "ads.txt"
+    - "robots.txt"
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "*.ipynb"
+    - "*.xml"
+    - "!*.md"
+
+
+website:
+  title: "archive"
+  google-analytics:
+    tracking-id: G-K99C7EJ00T
+
+  # site
+  site-url: https://dotpie.dev
+  site-path: /
+
+  # repo
+  repo-url: https://github.com/dotpie/dotpie.github.io
+  # repo-actions: [issue]
+  issue-url: https://github.com/dotpie/dotpie.github.io/issues/new
+
+  # features
+  reader-mode: false
+  back-to-top-navigation: false
+  bread-crumbs: false
+
+  # navbar
+  navbar:
+    background: primary
+    tools:
+      - icon: person
+        href: ./about.qmd
+      - icon: github
+        href: https://github.com/dotpie
+  favicon: ./favicon.ico
+  page-navigation: true
+
+  # comments
+  comments:
+    giscus:
+      repo: dotpie/dotpie.github.io
+      category: General
+      mapping: pathname
+      reactions-enabled: true
+      loading: lazy
+      input-position: top
+      theme: noborder_light   # transparent-dark
+      language: en
+
+  # footer
+  # page-footer:
+  #   left:
+  #     - text: "About"
+  #       href: about.qmd
+  #   right:
+  #     - text: "GitHub"
+  #       href: https://github.com/dotpie
+  #   center:
+  #     - text: "© 2024 dotpie"
+  #       href: https://dotpie.dev
+
+  # search
+  search:
+    location: navbar
+    type: overlay
+
+
+format:
+  html:
+    # header
+    include-in-header:
+      - file: ./header.html
+
+    execute:
+      echo: true
+      warning: false
+
+    # font
+    mainfont: |
+      Monserrat, Noto Sans KR, sans-serif;
+    monofont: |
+      Monaco, monospace;
+    # fontsize: 1.2rem
+    linestretch: 2
+    section-divs: true
+
+    # UX
+    # smooth-scroll: true
+    anchor-sections: false
+    link-external-icon: true
+    # link-external-newwindow: true
+
+    # math
+    # html-math-method: mathjax
+    # classoption: fleqn
+
+    # table of contents
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    # toc-expand: true
+
+    # text output
+    # strip-comments: false
+    ascii: true
+
+    # code
+    highlight-style: github
+    code-overflow: scroll   # https://quarto.org/docs/output-formats/html-code.html#code-overflow
+    # code-fold: false    # https://quarto.org/docs/output-formats/html-code.html#code-tools
+    # code-tools: true
+    # code-line-numbers: true   # https://quarto.org/docs/output-formats/html-code.html#line-numbers
+    code-block-background: true
+    code-copy: hover
+
+    # layout
+    page-layout: full # article
+
+    theme:  # https://bootswatch.com/
+      light: ["flatly", "./style/theme-light.scss"]
+      dark: ["darkly", "./style/theme-dark.scss"]
+    css: "./style/layout.css"
+
+    title-block-style: default
+    title-block-banner: true
+    title-block-categories: true
+
+    # grid:
+    #   sidebar-width: 300px
+    #   body-width: 900px
+    #   margin-width: 200px
+    #   gutter-width: 3rem
+
+    # https://quarto.org/docs/output-formats/html-code.html#highlighting
+    # Quarto will automatically select the appropriate style based upon the code chunk background color’s darkness.
+    # Users may always opt to specify the full name (e.g. atom-one-dark) to by pass this automatic behavior.
+
+    # image
+    image-lazy-loading: true
+
+
+meta-files: [metafile.yml]
+
+
+# Footnotes
+reference-location: section     # [ document | section | block | margin ]
+# citation-location: margin   # [ document | margin ]
+callout-appearance: simple
+
+
+# author:
+#   name: dotpie
+#   email: mail@dotpie.dev
+# date: last-modified

@@ -1,0 +1,44 @@
+---
+website:
+ comments:
+    giscus: false
+    # navbar:
+        # background: "#FFFFFF"
+format:
+  html:
+    # fontsize: 1rem
+    page-layout: full # article
+    title-block-banner: true
+    sidebar: false
+    author: ""
+    date: ""
+    code-tools: false
+
+listing:
+  # contents: 'posts'
+  feed: true
+  type: grid # grid, default, table
+
+  # page-size: 9
+  # fields: ['image', 'title', 'subtitle',  'categories', 'reading-time', 'author', 'date',  'filename']
+  fields: ['title', 'subtitle',  'categories', 'reading-time', 'author', 'date']
+  sort: ['categories', 'date', 'reading-time', 'title']
+
+  # max-description-length: 100
+  image-placeholder: '/static/thumbnail.jpeg'
+  image-height: 2rem
+
+  table-hover: true
+  # categories: cloud   # false, numbered, unnumbered, cloud
+
+  sort-ui: ['title', 'categories', 'date', 'reading-time']
+  filter-ui: true
+
+  image-lazy-loading: true
+
+  exclude:
+    title: "YeEun Hong"
+
+---
+
+
