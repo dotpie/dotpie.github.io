@@ -1,0 +1,10 @@
+**/.quarto/
+**/_site/
+**/**files/
+
+tags
+.DS_Store
+
+.env
+
+/.quarto/
