@@ -10,6 +10,62 @@
 <atom:link href="https://dotpie.dev/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Sun, 29 Sep 2024 07:49:06 GMT</lastBuildDate>
+<lastBuildDate>Sat, 28 Sep 2024 15:00:00 GMT</lastBuildDate>
+<item>
+  <title>Being Part of Other’s Growth</title>
+  <dc:creator>dotpie </dc:creator>
+  <link>https://dotpie.dev/being-part-of-others-groth.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="callout callout-style-simple callout-note" data-collapser="false">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This is a personal reflection on how I can contribute to other’s growth.<br> It is based on my personal experiences so that it could be biased.</p>
+</div>
+</div>
+</div>
+<section id="a-knowledge-sharing-chain" class="level2">
+<h2 data-anchor-id="a-knowledge-sharing-chain">A knowledge-sharing-chain</h2>
+<p>What is the best way to pass on knowledge and experience to others? As a tutor, mentor, or a colleague, it was a question that I often asked myself. Most of time, I was in a position to help others grow, especially in coding and development. At the time, what I could do was to share my experiences and difficulties with others, because I was also on the middle of learning step.</p>
+<p>Sharing was enough when I was in student circle. In circle, we were all learned together, same time, same topic. The difficulties I encountered was highly repeated to others. What I tried was stacking my own difficulties and solutions, then share it when other faced the similar issue. This kind of ‘sharing chain’ was fully effective to boost our learning speed. We were a student and a teacher at the same time. Through this process, I learned to pick up the problems that other could face, and how to share the solution in a way that they could understand.</p>
+</section>
+<section id="the-requirements-for-sharing-knowledge" class="level2">
+<h2 data-anchor-id="the-requirements-for-sharing-knowledge">The requirements for sharing knowledge</h2>
+<p>To make other understand the solution, tutor have to is understanding the fundamental background of the whole situation. Tutor have to decide where to focus on, then connect the key points to make a clear path.</p>
+<p>Yet, I was a kind of person who explore the whole picture of the problem, point out the key points is kind of complicated task. There were too many things to explain and every detail looked important. To overcome this, I made a strategy by breaking down the problem into small pieces, then pick up the key points of small pieces. After done this, I could make a clear path to the solution.</p>
+<p>Surely there might be someone who would like to know whole picture of the problem, but most of time, too much information makes them confused. Therefore, to give a proper answer, understanding listener’s background is essential. This is not a technical stuff, but a soft skill.</p>
+<p>Through my experiences, I listed the principle to share the knowledge effectively.</p>
+<ol type="1">
+<li><strong>Understand the listener’s background</strong>: To decide the depth of the explanation, checking the background is essential. The language of explanation should be familiar to the listener.</li>
+<li><strong>Find out how much motivated the listener is</strong>: The motivation of the lister means how much they want to know the solution. Tutoring and Teaching should not be done in a one-off session, since every knowledge has its own depth. If the listenr wants to know only the solution, then just give the solution. Learning shouldn’t be a burden. Theory and background can be explained later.</li>
+<li><strong>Associate the problem with the listener’s goal</strong>: People tends to focus when the problem is related to their own’s. As mentioned above, the listener’s motivation is important. If the listener has a goal, then associate the problem with the goal. This will make the listener feels that the issue familiar to them. Make them feel that they are not learning, but solving their own problem.</li>
+</ol>
+<p>These are aimed to make the learner acquire the way to solve the problem. The goal of tutoring is not to give the solution, but to make the listener understand the way to solve the problem.</p>
+</section>
+<section id="proactive-contribution" class="level2">
+<h2 data-anchor-id="proactive-contribution">Proactive contribution</h2>
+<p>The most important thing in sharing knowledge is to be proactive. During the tutoring process, the tutee are going to learn how to find problems and how to ask properly, such as what to ask, what looked important, and what could be suspicious. After the steps, the tutee will be able to discuss the problem with others, and find the solution by themselves. A kind of knowledge-sharing-chain will be formed.</p>
+<p>Tutor should not be a person who gives the solution, but the person who thinks together with the tutee. To do this, tutor have to be proactive, which means tutor have their own motivation to learn and think. This is the most important thing to be a being part of other’s growth.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 data-anchor-id="conclusion">Conclusion</h2>
+<p>I am still learning how to learn as tutee and tutor. It will be continued during my developer life, and I hope that I could be a developer who have solid foundation of knowledge and experience.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>soft-skills</category>
+  <category>self-review</category>
+  <guid>https://dotpie.dev/being-part-of-others-groth.html</guid>
+  <pubDate>Sat, 28 Sep 2024 15:00:00 GMT</pubDate>
+</item>
 </channel>
 </rss>

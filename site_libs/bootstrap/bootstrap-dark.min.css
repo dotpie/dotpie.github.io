@@ -1,4 +1,4 @@
-﻿@import"https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap";body.nav-fixed.quarto-dark{color:#eee;background-color:#282b34}#quarto-header>.navbar.navbar-expand-lg,#title-block-header>div.quarto-title-banner.page-columns.page-full,#title-block-header>.quarto-title-block.default.page-columns.page-full,#quarto-content{color:#eee;background-color:#282b34}footer>.nav-footer{color:#eee;background-color:#282b34}div.sourceCode{background-color:#282b34}/*!
+﻿@import"https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap";body.nav-fixed.quarto-dark,header#title-block-header,header#quarto-header>nav,header#title-block-header>div,div#quarto-content,footer.footer>div{color:#eee;background-color:#282b34}div.sourceCode{background-color:#282b34}/*!
  * Bootstrap  v5.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
