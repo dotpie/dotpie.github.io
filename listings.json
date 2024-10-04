@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/algorithm/factorial.html",
+      "/cs/binary.html",
       "/being-part-of-others-growth.html"
     ]
   }

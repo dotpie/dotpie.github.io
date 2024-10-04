@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="dotpie">
+<meta name="dcterms.date" content="2024-10-03">
+
+<title>Why Binary and Hexadecimal are Important in Python – archive</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href=".././favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-K99C7EJ00T"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-K99C7EJ00T', { 'anonymize_ip': true});
+</script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="manifest" href="../site.webmanifest">
+
+<!-- Adsense: To automatically find place to insert -->
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8683389196563473" crossorigin="anonymous"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../style/layout.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">archive</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-wide tools-end">
+    <a href="../about.html" title="YeEun Hong" class="quarto-navigation-tool px-1" aria-label="YeEun Hong"><i class="bi bi-person"></i></a>
+    <a href="https://github.com/dotpie" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Why Binary and Hexadecimal are Important in Python</h1>
+            <p class="subtitle lead">Understanding the usage and relation of Binary and Hexadecimal in Python</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">computer science</div>
+                <div class="quarto-category">python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta column-page-left">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>dotpie </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 3, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unit-of-data" id="toc-unit-of-data" class="nav-link active" data-scroll-target="#unit-of-data">Unit of Data</a>
+  <ul class="collapse">
+  <li><a href="#binary-representation-with-open-function" id="toc-binary-representation-with-open-function" class="nav-link" data-scroll-target="#binary-representation-with-open-function">Binary Representation with <code>open()</code> Function</a></li>
+  <li><a href="#basis-unit-of-information-bit-and-byte" id="toc-basis-unit-of-information-bit-and-byte" class="nav-link" data-scroll-target="#basis-unit-of-information-bit-and-byte">Basis unit of information: Bit and Byte</a></li>
+  <li><a href="#hexadecimal-compact-representation-of-binary-data" id="toc-hexadecimal-compact-representation-of-binary-data" class="nav-link" data-scroll-target="#hexadecimal-compact-representation-of-binary-data">Hexadecimal: Compact Representation of Binary Data</a></li>
+  </ul></li>
+  <li><a href="#practical-use-of-binary-and-hexadecimal-in-python" id="toc-practical-use-of-binary-and-hexadecimal-in-python" class="nav-link" data-scroll-target="#practical-use-of-binary-and-hexadecimal-in-python">Practical Use of Binary and Hexadecimal in Python</a>
+  <ul class="collapse">
+  <li><a href="#convert-between-number-systems" id="toc-convert-between-number-systems" class="nav-link" data-scroll-target="#convert-between-number-systems">Convert between number systems</a>
+  <ul class="collapse">
+  <li><a href="#convert-different-base-numbers-to-decimal" id="toc-convert-different-base-numbers-to-decimal" class="nav-link" data-scroll-target="#convert-different-base-numbers-to-decimal">Convert different base numbers to decimal</a></li>
+  <li><a href="#convert-decimal-to-different-base-numbers" id="toc-convert-decimal-to-different-base-numbers" class="nav-link" data-scroll-target="#convert-decimal-to-different-base-numbers">Convert decimal to different base numbers</a></li>
+  </ul></li>
+  <li><a href="#bitwise-operations" id="toc-bitwise-operations" class="nav-link" data-scroll-target="#bitwise-operations">Bitwise Operations</a>
+  <ul class="collapse">
+  <li><a href="#difference-between-bitwise-and-logical-operators" id="toc-difference-between-bitwise-and-logical-operators" class="nav-link" data-scroll-target="#difference-between-bitwise-and-logical-operators">Difference between bitwise and logical operators</a></li>
+  <li><a href="#bitwise-operations-in-python" id="toc-bitwise-operations-in-python" class="nav-link" data-scroll-target="#bitwise-operations-in-python">Bitwise Operations in Python</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/dotpie/dotpie.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
+
+
+
+
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Introduction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Knowing that computers use binary language, yet as a Python programmer, I haven’t had much chance to work with binary and hexadecimal in usual programming tasks. Binary numbers didn’t feel close to me. Since high-level programming like Python deals with abstract data types. Binary were looked rather theoretical.<br>
+However, when I came across a problem required to handle exponential values of 2, I found out practical side of binary and hexadecimal. This article provides a brief review of binary and hexadecimal representation in Python, along with their role in computer architecture and real-world applications.</p>
+</div>
+</div>
+</div>
+<p>Despite the fact that binary and hexadecimal systems are fundamental to computer science, many programmers don’t often directly handle these number systems in their day-to-day task. Nevertheless, understanding and utilizing these number system is crucial in various aspects of programming and computer science.</p>
+<p>It’s important to note that binary can be used to represent anything in computing, from text and images to video and beyond. As we delve into this topic, we’ll explore how these number systems play a vital role in both low-level and high-level programming.</p>
+<p><br></p>
+<section id="unit-of-data" class="level1">
+<h1>Unit of Data</h1>
+<p>Computer only understands binary language, which is a combination of 0s and 1s. It is the reason why binary and hexadecimal are basis of all data representation in computer. Although we are not familiar with these number systems, we are close to the terms of ‘Kilobyte(KB)’, ‘Megabyte(MB)’, ‘Gigabyte(GB)’ and ‘Terabyte(TB)’.</p>
+<p>1 TB is equals to 1024 GB, 1 GB is equals to 1024 MB and it works same on others. In general, Kilo means 1000, Mega means 1,000,000, Giga means 1,000,000,000 and Tera means 1,000,000,000,000. those units are increased the power of 1000. However, when it comes to computer, it is not 1000, it is 1024. Why? Because every unit of data is represented in binary number. Considering this, we can easily found the reason why computer system use 1024 ($2^{10}), which is the nearest power of 2 to 1000.</p>
+<p>It is hard to understand that every text, image, video and other data are represented in terms of 0s and 1s. But you can easily check it by opening any file in binary mode. Let’s see how it works.</p>
+<p><br></p>
+<section id="binary-representation-with-open-function" class="level2">
+<h2 data-anchor-id="binary-representation-with-open-function">Binary Representation with <code>open()</code> Function</h2>
+<p>My favicon image is 16x16 pixels and it is a PNG file like below. Let’s read the file in binary mode and see the first 5 bytes of it.</p>
+<div id="9ff1f0a0" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the favicon image in binary mode</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_file(file_path):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">'rb'</span>) <span class="im">as</span> <span class="bu">file</span>:     <span class="co"># Open the file in binary mode</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">file</span>.read()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> os.getcwd() <span class="op">+</span> <span class="st">'/favicon-16x16.png'</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> read_file(file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The variable <code>data</code> could be shown both in an image and in binary format.</p>
+<p>First, you can see the favicon image below. The normal format of the image.</p>
+<div id="39e34a91" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the favicon image</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>favicon_img <span class="op">=</span> Image.<span class="bu">open</span>(file_path)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>display(favicon_img)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="binary_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Whereas, the binary format of the image is as follows:</p>
+<div id="444d4836" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first 5 bytes of the file in binary</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> b <span class="kw">in</span> (data[:<span class="dv">5</span>]):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">bin</span>(b), end<span class="op">=</span><span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>0b10001001 0b1010000 0b1001110 0b1000111 0b1101 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+File Object in Python: Text, Buffered Binary, Raw Binary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Python has three type of main file objects: text file, buffered binary file and raw binary file. <code>open()</code> function is the canonical way to create a file object. It takes two arguments: file path and mode.</p>
+<p>Files can be opened in two modes: text mode and binary mode. Text mode is for text data, binary mode is for non-text data like images, audio, etc. Binary mode does not perform any encoding or decoding. It reads and writes data as it is.</p>
+<p>To open a file in binary mode, you need to add <code>b</code> to the mode string. For example, <code>rb</code> for reading and <code>wb</code> for writing. With this binary mode, you can get the <code>bytes</code> object instead of <code>str</code> object. A bytes object is a sequence of integers in the range of 0 to 255. This is why the output of the code below is range of 0 to 255, not 0 or 1.</p>
+<div id="ae26c60f" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open a file in binary mode</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> b <span class="kw">in</span> (data[:<span class="dv">5</span>]):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>((b), end<span class="op">=</span><span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>137 80 78 71 13 </code></pre>
+</div>
+</div>
+<p>For more information, you can check the official Python documentation:</p>
+<ul>
+<li><a href="https://docs.python.org/3/library/functions.html#open">https://docs.python.org/3/library/functions.html#open</a></li>
+<li><a href="https://docs.python.org/3/glossary.html#term-file-object">https://docs.python.org/3/glossary.html#term-file-object</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#bytes">https://docs.python.org/3/library/stdtypes.html#bytes</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="basis-unit-of-information-bit-and-byte" class="level2">
+<h2 data-anchor-id="basis-unit-of-information-bit-and-byte">Basis unit of information: Bit and Byte</h2>
+<p>As you can see, my favicon image is represented in binary format. The first 5 bytes of the image are as follows:</p>
+<pre><code>0b10001001 0b1010000 0b1001110 0b1000111 0b1101</code></pre>
+<p>In case of ‘0b10001001’, ‘0b’ is a prefix to indicate that the number is in binary format. The number itself is 10001001. Each digit in binary number is called a <code>bit</code>, which is the smallest unit of signal in a computer science. Bit is a short form of <code>binary digit</code>.</p>
+<p>Bit only can have two values, 0 or 1 (off or on). <span class="math inline">\(N\)</span> bits can represent <span class="math inline">\(2^{N}\)</span> values. It is too small to indicate any meaningful data. Therefore, it is grouped into a larger unit called <code>byte</code>, which is the basic unit of data.</p>
+<p>In the above example, 10001001 is consisted of 8 bits. As you can see, 1 byte can represent <span class="math inline">\(2^{8}\)</span> or 256 values. Does byte enough to describe information? Yes, it is. For example, 1 byte is enough to indicate a character in ASCII code. This is why the byte is the basic unit of data in computer science. Since the basic unit of data is byte, every unit of data is ends with ‘byte’. For example, kilobyte, megabyte, gigabyte, terabyte, etc. are all ends with ‘byte’.</p>
+<p><br></p>
+</section>
+<section id="hexadecimal-compact-representation-of-binary-data" class="level2">
+<h2 data-anchor-id="hexadecimal-compact-representation-of-binary-data">Hexadecimal: Compact Representation of Binary Data</h2>
+<p>What about hexadecimal? Hexadecimal is a numeric system that based on 16. It uses 16 symbols: 0-9 and A-F, the most compact way to compress binary data. For example, only 2 digits are enough to indicate number 255 in hexadecimal, whereas 8 digits are needed in binary, like 0b11111111. Namely, 1 byte can be represented by 2 hexadecimal digits.</p>
+<p>Still computer uses binary number, hexadecimal is compromise between programmer and computer. It is easier to read and write than binary, also easily convert to binary. This is why hexadecimal is widely used in computer science, especially in low-level programming: expressing memory addresses, register values, and other byte based data, for instance.</p>
+<p><br></p>
+</section>
+</section>
+<section id="practical-use-of-binary-and-hexadecimal-in-python" class="level1">
+<h1>Practical Use of Binary and Hexadecimal in Python</h1>
+<section id="convert-between-number-systems" class="level2">
+<h2 data-anchor-id="convert-between-number-systems">Convert between number systems</h2>
+<section id="convert-different-base-numbers-to-decimal" class="level3">
+<h3 data-anchor-id="convert-different-base-numbers-to-decimal">Convert different base numbers to decimal</h3>
+<p>Python provides built-in functions to convert different base numbers to decimal.</p>
+<p>Binary numbers are string of 0s and 1s. To convert binary to decimal, <code>int</code> function can be used with base 2. Normally, <code>int</code> function takes one argument, which is a string of number. However, <code>int</code> function can takes two arguments: number and base. For example, <code>int('1010', 2)</code> converts binary number ‘1010’ to decimal number 10.</p>
+<div id="8d92571d" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert binary to decimal</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># class int( x: str | bytes | bytearray, /, base: SupportsIndex) -&gt; int</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>binary_num <span class="op">=</span> <span class="st">'1010'</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>decimal_num <span class="op">=</span> <span class="bu">int</span>(binary_num, <span class="dv">2</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Binary number </span><span class="sc">{</span>binary_num<span class="sc">}</span><span class="ss"> is converted to decimal number </span><span class="sc">{</span>decimal_num<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Binary number 1010 is converted to decimal number 10</code></pre>
+</div>
+</div>
+<p>Likewise, hexadecimal number can be converted to decimal number. Since hex numbers are described of 0-9 and A-F, its data type is string. To convert hexadecimal to decimal, <code>int</code> function can be used with base 16. For example, <code>int('FF', 16)</code> converts hexadecimal number ‘FF’ to decimal number 255.</p>
+<div id="2d6d6d4a" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert hexadecimal to decimal</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>hex_num <span class="op">=</span> <span class="st">'FF'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>decimal_num <span class="op">=</span> <span class="bu">int</span>(hex_num, <span class="dv">16</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Hexadecimal number </span><span class="sc">{</span>hex_num<span class="sc">}</span><span class="ss"> is converted to decimal number </span><span class="sc">{</span>decimal_num<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Hexadecimal number FF is converted to decimal number 255</code></pre>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="convert-decimal-to-different-base-numbers" class="level3">
+<h3 data-anchor-id="convert-decimal-to-different-base-numbers">Convert decimal to different base numbers</h3>
+<p>To convert decimal number to binary or hexadecimal, <code>bin</code> and <code>hex</code> functions can be used. <code>bin</code> function converts decimal number to binary number. <code>hex</code> function converts decimal number to hexadecimal number.</p>
+<div id="517bdbc3" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert decimal to binary</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (function) def bin(number: int | SupportsIndex, / ) -&gt; str</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>decimal_num <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>binary_num <span class="op">=</span> <span class="bu">bin</span>(decimal_num)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decimal number </span><span class="sc">{</span>decimal_num<span class="sc">}</span><span class="ss"> is converted to binary number </span><span class="sc">{</span>binary_num<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Decimal number 10 is converted to binary number 0b1010</code></pre>
+</div>
+</div>
+<div id="4b581e30" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert decimal to hexadecimal</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (function) def hex(number: int | SupportsIndex, / ) -&gt; str</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>decimal_num <span class="op">=</span> <span class="dv">255</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>hex_num <span class="op">=</span> <span class="bu">hex</span>(decimal_num)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decimal number </span><span class="sc">{</span>decimal_num<span class="sc">}</span><span class="ss"> is converted to hexadecimal number </span><span class="sc">{</span>hex_num<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Decimal number 255 is converted to hexadecimal number 0xff</code></pre>
+</div>
+</div>
+<p><br></p>
+</section>
+</section>
+<section id="bitwise-operations" class="level2">
+<h2 data-anchor-id="bitwise-operations">Bitwise Operations</h2>
+<p>Bitwise operations are performed on binary numbers. These operators are particularly useful when dealing with binary representations directly. In certain situations, it significantly improves the performance of the code as well.</p>
+<p>The main bitwise operators in Python are:</p>
+<ol type="1">
+<li><code>&amp;</code> (AND): Returns 1 if both bits are 1.</li>
+<li><code>|</code> (OR): Returns 1 if either of the bits is 1.</li>
+<li><code>^</code> (XOR): Returns 1 if the bits are different.</li>
+<li><code>~</code> (NOT): Inverts the bits.</li>
+<li><code>&lt;&lt;</code> (Left Shift): Shifts the bits to the left.</li>
+<li><code>&gt;&gt;</code> (Right Shift): Shifts the bits to the right.</li>
+</ol>
+<p><br></p>
+<section id="difference-between-bitwise-and-logical-operators" class="level3">
+<h3 data-anchor-id="difference-between-bitwise-and-logical-operators">Difference between bitwise and logical operators</h3>
+<p>In Python, there are bitwise operators (<code>&amp;</code>, <code>|</code>, <code>~</code>) and their logical counterparts (<code>and</code>, <code>or</code>, <code>not</code>). While the basic concepts are similar, their implementations differ. Both <code>&amp;</code> and <code>and</code> return True when both conditions are True, but <code>&amp;</code> operates on individual bits. Similarly, <code>|</code> and <code>or</code>, as well as <code>~</code> and <code>not</code>, have analogous functions but work at different levels of abstraction. These operators may seem interchangeable, in some situations, yet understanding their differences is crucial.</p>
+<div id="cd120683" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bitwise AND operator</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bitwise AND: </span><span class="sc">{</span><span class="dv">5</span> <span class="op">&amp;</span> <span class="dv">8</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Logical AND: </span><span class="sc">{</span><span class="dv">5</span> <span class="kw">and</span> <span class="dv">8</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Bitwise AND: 0
+Logical AND: 8</code></pre>
+</div>
+</div>
+<p>Why does the output differ? The <code>&amp;</code> operator works on individual bits, whereas the <code>and</code> operator evaluates compare the entire expression of operands: 5, 8.</p>
+<div id="d99e4256" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Binary representation of 5 and 8</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Binary of 5: </span><span class="sc">{</span><span class="bu">bin</span>(<span class="dv">5</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Binary of 8: </span><span class="sc">{</span><span class="bu">bin</span>(<span class="dv">8</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Binary of 5: 0b101
+Binary of 8: 0b1000</code></pre>
+</div>
+</div>
+<p>The binary representation of 5 and 8 are <code>0b101</code> and <code>0b1000</code>, respectively. The bitwise AND operation is performed on each bit of the two numbers. There are no common digits/numbers/bits between 5 and 8. Therefore the result is <code>0b0</code>, which is 0 in decimal.</p>
+<p>What about the logical AND operation? The <code>and</code> operator evaluates the truth of the entire expression. In this case, both 5 and 8 are considered <code>True</code> in Python. <u>The <code>and</code> operator returns the second operand</u>, which is 8 in this case. Therefore, the output is 8.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Differences between Bitwise and Logical Operators
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here are some key differences between bitwise and logical operators:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Bitwise Operator</th>
+<th>Logical Operator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Usage</td>
+<td>Binary operation</td>
+<td>Logical operation</td>
+</tr>
+<tr class="even">
+<td>Target</td>
+<td>integer value</td>
+<td>Boolean in most case</td>
+</tr>
+<tr class="odd">
+<td>Return Value</td>
+<td>Bitwise result (integer)</td>
+<td>One of the operands</td>
+</tr>
+<tr class="even">
+<td>Precedence</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr class="odd">
+<td>Evaluation</td>
+<td>All operands</td>
+<td>Does not evaluate second operand if first operand is False</td>
+</tr>
+<tr class="even">
+<td>Boolean</td>
+<td>Treats True as 1, False as 0</td>
+<td>Uses boolean class as is</td>
+</tr>
+<tr class="odd">
+<td>in Expression</td>
+<td>Perform AND operation bit by bit</td>
+<td>Evaluates logical truth of entire expression</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="bitwise-operations-in-python" class="level3">
+<h3 data-anchor-id="bitwise-operations-in-python">Bitwise Operations in Python</h3>
+<p>Bitwise Operations can be easily understood by the following images:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">AND</th>
+<th style="text-align: center;">OR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://realpython.com/cdn-cgi/image/format=auto/https://files.realpython.com/media/and.ef7704d02d6f.gif" alt="Bitwise And" style="height:20vh; width:40vh; max-width:100%; "></td>
+<td style="text-align: center;"><img src="https://realpython.com/cdn-cgi/image/format=auto/https://files.realpython.com/media/or.7f09664e2d15.gif" alt="Bitwise Or" style="height:20vh; width:40vh; max-width:100%; "></td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">XOR</th>
+<th style="text-align: center;">NOT</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://realpython.com/cdn-cgi/image/format=auto/https://files.realpython.com/media/xor.8c17776dd501.gif" alt="Bitwise Xor" style="height:20vh; width:40vh; max-width:100%; "></td>
+<td style="text-align: center;"><img src="https://realpython.com/cdn-cgi/image/format=auto/https://files.realpython.com/media/not.7edac5691829.gif" alt="Bitwise Not" style="height:20vh; width:40vh; max-width:100%; "></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>GIF: <a href="https://realpython.com/python-bitwise-operators/">RealPython.com - Bitwise Operators in Python</a></li>
+</ul>
+<p><br></p>
+<section id="shift-operators" class="level4">
+<h4 data-anchor-id="shift-operators">Shift Operators</h4>
+<p>Operators above are compare the bits of two numbers. However, <code>&lt;&lt;</code> and <code>&gt;&gt;</code> operators works tricky. <code>&lt;&lt;</code> and <code>&gt;&gt;</code> operators called <code>left shift</code> and <code>right shift</code> operators. They shift the bits of a number to the left or right.</p>
+<p>In terms of shift operators, it is important to note what shifting means in binary numbers. Shifting to the left means multiplying the number by 2, likewise shifting to the right means dividing the number by 2. Remind that every digit in binary number is power of 2.</p>
+<p>Left shift operator shifts the bits to the left, and fills the empty bits with 0. Let’s see how it works in Python.</p>
+<div id="8198df88" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bitwise Left Shift</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>number <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The binary of </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span><span class="bu">bin</span>(number)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>The binary of 5 is 0b101</code></pre>
+</div>
+</div>
+<p>Decimal number 5 is represented in binary as 101(2). When shifted to the left by 1, the result is 1010(1), which is same as <span class="math inline">\(5 * 2^{1}\)</span>.</p>
+<div id="6dba7bfa" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>shifted <span class="op">=</span> number <span class="op">&lt;&lt;</span> <span class="dv">1</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Left Shifted by 1: </span><span class="sc">{</span>shifted<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(shifted)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Left shifted by 1 is equal to </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> * 2 = </span><span class="sc">{</span>number <span class="op">*</span> <span class="dv">2</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Left Shifted by 1: 10 (0b1010)
+Left shifted by 1 is equal to 5 * 2 = 10</code></pre>
+</div>
+</div>
+<p>Likewise, when shifted to the left by 2, the result is 10100(4), which is same as <span class="math inline">\(5 * 2^{2}\)</span>.</p>
+<div id="259eddd6" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>shifted_2 <span class="op">=</span> number <span class="op">&lt;&lt;</span> <span class="dv">2</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Left Shifted by 2: </span><span class="sc">{</span>shifted_2<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(shifted_2)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Left shifted by 2 is equal to </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> * 4 = </span><span class="sc">{</span>number <span class="op">*</span> <span class="dv">4</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Left Shifted by 2: 20 (0b10100)
+Left shifted by 2 is equal to 5 * 4 = 20</code></pre>
+</div>
+</div>
+<p>How about shifting to the left by 7? The result is 1010000000(128), which is same as <span class="math inline">\(5 * 2^{7}\)</span>. Only adding 7 zeros to the right is the same as multiplying by 128.</p>
+<div id="8d3dba2a" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>shifted_7 <span class="op">=</span> number <span class="op">&lt;&lt;</span> <span class="dv">7</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Left Shifted by 7: </span><span class="sc">{</span>shifted_7<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(shifted_7)<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Left Shifted by 7: 640 (0b1010000000)</code></pre>
+</div>
+</div>
+<p>There is right shift operator either. Right shift operator shifts the bit to the right, which is equivalent to dividing the number by 2. Let’s bring back <code>shifted_7</code> to the original number.</p>
+<div id="7a9da81a" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The Original number is </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(number)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Left Shifted by 7 was </span><span class="sc">{</span>shifted_7<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(shifted_7)<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>The Original number is 5 (0b101)
+Left Shifted by 7 was 640 (0b1010000000)</code></pre>
+</div>
+</div>
+<div id="c12201ff" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bitwise Right Shift</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>shifted_back <span class="op">=</span> shifted_7 <span class="op">&gt;&gt;</span> <span class="dv">1</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Right Shifted by 1: </span><span class="sc">{</span>shifted_back<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(shifted_back)<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Right Shifted by 1: 320 (0b101000000)</code></pre>
+</div>
+</div>
+<div id="75e1f2a9" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>shifted_back_2 <span class="op">=</span> shifted_7 <span class="op">&gt;&gt;</span> <span class="dv">2</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Right Shifted by 2: </span><span class="sc">{</span>shifted_back_2<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(shifted_back_2)<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Right Shifted by 2: 160 (0b10100000)</code></pre>
+</div>
+</div>
+<div id="18453ca5" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>shifted_back_7 <span class="op">=</span> shifted_7 <span class="op">&gt;&gt;</span> <span class="dv">7</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Right Shifted by 7: </span><span class="sc">{</span>shifted_back_7<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">bin</span>(shifted_back_7)<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Right Shifted by 7: 5 (0b101)</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Shifted Operators to Mathematical Operations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[a &lt;&lt; n = a \times 2^{n}\]</span> <span class="math display">\[a &gt;&gt; n = a \div 2^{n}\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why does the shift operator needed?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Bitwise shift operators are useful in optimization. Computers can not multiply or divide numbers directly. They can only add and subtract. Therefore, multiplying or dividing large numbers takes a large amout of computation. However, shifting bits is much faster than multiplying or dividing. This is why shift operators are used in low-level programming.</p>
+<p>This is theoretical explanation, but in real-world, compilers and interpreters are smart enough to optimize the code. Python is a high-level language, which means readability is more important than slight performance improvement. Therefore, using shift operators as a means of premature optimization is not recommended.</p>
+<ul>
+<li><a href="https://realpython.com/python-bitwise-operators/">https://realpython.com/python-bitwise-operators/</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Right Shift Operator: What if the number is negative?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Normally, dividing operation works same in positive and negative numbers. However, right shift operator works differently in negative numbers because of the way negative numbers are represented in binary.</p>
+<p>Computer uses <em>two’s complement</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to represent negative numbers. In two’s complement, the most significant bit (MSB) is used as a sign bit. If the sign bit is 1, the number is negative. When right shifting a negative number, the sign bit is copied to the empty bits. This is called <em>sign extension</em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<div id="5dc1e9d5" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right Shift Operator with negative number</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_bits(num, bits<span class="op">=</span><span class="dv">8</span>):</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Show the integer number in binary format</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Represent negative number as a two's complement</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>        num <span class="op">=</span> (<span class="dv">1</span> <span class="op">&lt;&lt;</span> bits) <span class="op">+</span> num</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">format</span>(num, <span class="ss">f'0</span><span class="sc">{</span>bits<span class="sc">}</span><span class="ss">b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The function above is implementation of showing the binary bits of a number. If the number is negative, it convert the number to two’s complement. First, extend the bits to determined length of bits, which is 8 in this case. Then, add the number to <span class="math inline">\(2^{bits=8}\)</span>. As added number is negative, it is same as subtracting the number from <span class="math inline">\(2^{bits=8}\)</span>. This is how two’s complement works, that is flipping the bit values.</p>
+<p>Now, every number will be shown in positive number with 8 bits. In this callout, there are 2 examples of right shift operator with negative numbers.</p>
+<ol type="1">
+<li>The result of right shift is rounded down to the negative direction.</li>
+</ol>
+<div id="0357e1d0" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right shift of negative number</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Right Shift of -5: </span><span class="sc">{</span>show_bits(<span class="op">-</span><span class="dv">5</span>)<span class="sc">}</span><span class="ss"> &gt;&gt; 1 = </span><span class="sc">{</span>show_bits(<span class="op">-</span><span class="dv">5</span> <span class="op">&gt;&gt;</span> <span class="dv">1</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Right Shift of -6: </span><span class="sc">{</span>show_bits(<span class="op">-</span><span class="dv">6</span>)<span class="sc">}</span><span class="ss"> &gt;&gt; 1 = </span><span class="sc">{</span>show_bits(<span class="op">-</span><span class="dv">6</span> <span class="op">&gt;&gt;</span> <span class="dv">1</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Right Shift of -5: 11111011 &gt;&gt; 1 = 11111101
+Right Shift of -6: 11111010 &gt;&gt; 1 = 11111101</code></pre>
+</div>
+</div>
+<p>The right shift of -5 and -6 by 1 is both -3. In fact, -5 divided by 2 should be -2.5. However, computers can only represent integers. This is why -5 &gt;&gt; 1 is -3.</p>
+<ol start="2" type="1">
+<li>The sign bit is copied to the empty bits.</li>
+</ol>
+<div id="37841670" class="cell" data-incorrectly_encoded_metadata="{.python}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right shift of -1</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Right Shift of -1: </span><span class="sc">{</span>show_bits(<span class="op">-</span><span class="dv">1</span>)<span class="sc">}</span><span class="ss"> &gt;&gt; 1 = </span><span class="sc">{</span>show_bits(<span class="op">-</span><span class="dv">1</span> <span class="op">&gt;&gt;</span> <span class="dv">1</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Right Shift of -1: 11111111 &gt;&gt; 1 = 11111111</code></pre>
+</div>
+</div>
+<p>After shifting the negative number to the right, left side is filled with 1. This is because the sign bit is copied to the empty bits. Likewise, the right shift of -1 remains -1 because every bit is filled with 1.</p>
+</div>
+</div>
+</div>
+<p><br></p>
+
+
+<aside id="footnotes" class="footnotes footnotes-end-of-section" role="doc-footnote">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Two%27s_complement">Two’s Complement - Wikipedia</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://en.wikipedia.org/wiki/Sign_extension">Sign Extension - Wikipedia</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
+</section>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dotpie\.dev");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="dotpie/dotpie.github.io" data-repo-id="R_kgDOM4vCGA" data-category="General" data-category-id="" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="noborder_light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="noborder_light">
+<input type="hidden" id="giscus-alt-theme" value="noborder_light">
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dotpie/dotpie.github.io/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
